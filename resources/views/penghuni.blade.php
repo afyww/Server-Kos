@@ -19,7 +19,7 @@
             <div class='w-full rounded-xl bg-white h-fit mx-auto'>
                 <div class="p-3">
                     <div class="flex justify-between">
-                        <h1 class="font-extrabold text-3xl">Kamar</h1>
+                        <h1 class="font-extrabold text-3xl">Penghuni</h1>
                         <a class="p-2 bg-blue-500 rounded-xl text-white hover:text-black text-center"
                             href="{{ route('addpenghuni') }}">Add
                             penghuni</a>

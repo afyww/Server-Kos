@@ -7,59 +7,79 @@ use Illuminate\Http\Request;
 
 class PenghuniController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $penghuni = Penghuni::all();
+
+        return view('penghuni', ['penghuni' => $penghuni]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('addpenghuni');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'identitas' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validate 'identitas' as the image field
+        ]);
+    
+        $data = [
+            'nama' => $request->input('nama'),
+            'alamat' => $request->input('alamat'),
+        ];
+    
+        if ($request->hasFile('identitas')) { // Check for 'identitas' file
+            $uploadedImage = $request->file('identitas');
+            $imageName = time() . '_' . $uploadedImage->getClientOriginalName();
+            $imagePath = $uploadedImage->storeAs('public/identitas', $imageName);
+            $data['identitas'] = 'identitas/' . $imageName; // Store image path in 'identitas'
+        }
+    
+        Penghuni::create($data);
+    
+        return redirect()->route('penghuni')->with('success', 'Penghuni Sukses Dibuat!');
+    }
+    
+    public function edit($id)
+    {
+        $penghuni = Penghuni::find($id);
+
+        return view('editpenghuni', ['penghuni' => $penghuni]);
+
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Penghuni $penghuni)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'alamat' => 'required',
+            'identitas' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+    
+        $penghuni = Penghuni::findOrFail($id);
+        
+        $penghuni->nama = $request->input('nama');
+        $penghuni->alamat = $request->input('alamat');
+    
+        if ($request->hasFile('identitas')) {
+            $imageName = time() . '_' . $request->file('identitas')->getClientOriginalName();
+            $request->file('identitas')->storeAs('public/img', $imageName);
+            $penghuni->identitas = 'img/' . $imageName;
+        }
+    
+        $penghuni->save();
+    
+        return redirect()->route('penghuni')->with('success', 'Penghuni Sukses Diupdate!');
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Penghuni $penghuni)
+    
+    public function destroy($id)
     {
-        //
-    }
+        Penghuni::destroy($id);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Penghuni $penghuni)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Penghuni $penghuni)
-    {
-        //
+        return redirect()->route('penghuni')->with('success', 'Penghuni Sukses Dihapus!');
     }
 }

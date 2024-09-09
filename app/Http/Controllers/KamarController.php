@@ -25,7 +25,6 @@ class KamarController extends Controller
 
     public function store(Request $request)
     {
-        // Validate input
         $request->validate([
             'type' => 'required',
             'fasilitas' => 'required',
@@ -67,18 +66,16 @@ class KamarController extends Controller
             'img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $kamar = Kamar::find($id);
+        $kamar = Kamar::findOrFail($id);
 
         $kamar->type = $request->input('type');
         $kamar->fasilitas = $request->input('fasilitas');
         $kamar->harga = $request->input('harga');
 
         if ($request->hasFile('img')) {
-            $uploadedImage = $request->file('img');
-            $imageName = $uploadedImage->getClientOriginalName();
-            $imagePath = $uploadedImage->storeAs('public/img', $imageName);
-            $data['img'] = 'img/' . $imageName;
-            $kamar->img = $data['img'];
+            $imageName = time() . '_' . $request->file('img')->getClientOriginalName();
+            $request->file('img')->storeAs('public/img', $imageName);
+            $kamar->img = 'img/' . $imageName;
         }
 
         $kamar->save();

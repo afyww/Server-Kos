@@ -16,7 +16,7 @@
         <!-- end Navbar -->
         <div class="p-6 space-y-2">
             <div class='w-full h-fit mx-auto'>
-                <div class="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-3 lg:grid-cols-3 gap-4 p-2">
+                <div class="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-4 lg:grid-cols-4 gap-4 p-2">
                     <!-- card1 -->
                     <a href="">
                         <div class="bg-blue-500 p-8 rounded-lg shadow-xl">
@@ -38,6 +38,13 @@
                             <h1 class="text-xl font-extrabold text-white text-right">Pembayaran</h1>
                         </div>
                     </a>
+                    <!-- card3 -->
+                    <a href="">
+                        <div class="bg-green-500 p-8 rounded-lg shadow-xl">
+                            <h1 class="text-2xl text-white font-bold"></h1>
+                            <h1 class="text-xl font-extrabold text-white text-right">Pengeluaran</h1>
+                        </div>
+                    </a>
                 </div>
             </div>
             <!-- chart -->
@@ -45,7 +52,7 @@
                 <!-- chart 1-->
                 <div class="p-6 bg-white rounded-xl shadow-xl">
                     <div>
-                        <h1 class="font-light">Jumlah Post</h1>
+                        <h1 class="font-light">Jumlah Pemasukan</h1>
                         <i class="fa fa-arrow-up text-lime-500"></i>
                     </div>
                     <canvas id="grafikPost" width="100" height="50"></canvas>
@@ -53,7 +60,7 @@
                 <!-- chart 2-->
                 <div class="p-6 bg-white rounded-xl shadow-xl">
                     <div>
-                        <h1 class="font-light">Jumlah Project</h1>
+                        <h1 class="font-light">Jumlah Pengeluaran</h1>
                         <i class="fa fa-arrow-up text-lime-500"></i>
                     </div>
                     <canvas id="grafikProject" width="100" height="50"></canvas>

@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('penghunis', function (Blueprint $table) {
             $table->id();
+            $table->string('nama');
+            $table->string('alamat');
+            $table->string('identitas');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@
         sidenav-close></i>
     <a class="block p-10 text-2xl text-slate-700" href="{{ route('dashboard') }}">
         <div>
-            <h1 class="font-bold text-center text-base">Sugeng Kost</h1>
+            <h1 class="font-extrabold text-center text-2xl">Sugeng Kost</h1>
         </div>
     </a>
     <hr class="h-px bg-transparent bg-gradient-to-r from-transparent via-black to-transparent" />
@@ -26,6 +26,28 @@
             </li>
             <li class="mt-2 mb-2">
                 <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors hover:text-black"
+                    href="{{ route('kamar') }}">
+                    <div class="flex h-8 w-8 bg-blue-400 rounded-xl items-center justify-center text-center">
+                        <svg width="20" height="20" viewBox="0 0 512 512" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            <title>project-new</title>
+                            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                <g id="Combined-Shape" fill="#000000" transform="translate(64.000000, 34.346667)">
+                                    <path
+                                        d="M192,-7.10542736e-15 L384,110.851252 L384,242.986 L341.333,242.986 L341.333,157.655 L213.333,231.555 L213.333,431.088 L192,443.405007 L0,332.553755 L0,110.851252 L192,-7.10542736e-15 Z M341.333333,264.32 L341.333,328.32 L405.333333,328.32 L405.333333,370.986667 L341.333,370.986 L341.333333,434.986667 L298.666667,434.986667 L298.666,370.986 L234.666667,370.986667 L234.666667,328.32 L298.666,328.32 L298.666667,264.32 L341.333333,264.32 Z M42.666,157.654 L42.6666667,307.920144 L170.666,381.82 L170.666,231.555 L42.666,157.654 Z M192,49.267223 L66.1333333,121.936377 L192,194.605531 L317.866667,121.936377 L192,49.267223 Z">
+
+                                    </path>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="ml-1 font-semibold">Kamar</span>
+                    </div>
+                </a>
+            </li>
+            <li class="mt-2 mb-2">
+                <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors hover:text-black"
                     href="">
                     <div class="flex h-8 w-8 bg-blue-400 rounded-xl items-center justify-center text-center">
                         <svg width="20" height="20" viewBox="0 0 512 512" version="1.1"
@@ -42,21 +64,8 @@
                         </svg>
                     </div>
                     <div>
-                        <span class="ml-1 font-semibold">Project</span>
+                        <span class="ml-1 font-semibold">Penghuni</span>
                     </div>
-                </a>
-            </li>
-            <hr class="h-px bg-transparent bg-gradient-to-r from-transparent via-black to-transparent" />
-            <li class="mt-2 ml-10">
-                <a class="py-2 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors hover:text-black"
-                    href="">
-                    <span class="ml-1 font-semibold">Projects</span>
-                </a>
-            </li>
-            <li class="mt-2 ml-10">
-                <a class="py-2 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors hover:text-black"
-                    href="">
-                    <span class="ml-1 font-semibold">Categories</span>
                 </a>
             </li>
             <li class="mt-2 mb-2">
@@ -102,21 +111,55 @@
                         </svg>
                     </div>
                     <div>
-                        <span class="ml-1 font-semibold">Blog</span>
+                        <span class="ml-1 font-semibold">Pembayaran</span>
                     </div>
                 </a>
             </li>
-            <hr class="h-px bg-transparent bg-gradient-to-r from-transparent via-black to-transparent" />
-            <li class="mt-2 ml-10">
-                <a class="py-2 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors hover:text-black"
+            <li class="mt-2 mb-2">
+                <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors hover:text-black"
                     href="">
-                    <span class="ml-1 font-semibold">Posts</span>
-                </a>
-            </li>
-            <li class="mt-2 ml-10">
-                <a class="py-2 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors hover:text-black"
-                    href="">
-                    <span class="ml-1 font-semibold">Categories</span>
+                    <div class="flex h-8 w-8 bg-blue-400 rounded-xl items-center justify-center text-center">
+                        <svg width="15" height="15" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+
+                            <defs>
+
+                                <style>
+                                    .cls-1 {
+                                        fill: none;
+                                        stroke: #020202;
+                                        stroke-miterlimit: 10;
+                                        stroke-width: 1.92px;
+                                    }
+                                </style>
+
+                            </defs>
+
+                            <g id="roll_brush" data-name="roll brush">
+
+                                <line class="cls-1" x1="5.24" y1="11.08" x2="18.66" y2="11.08" />
+
+                                <line class="cls-1" x1="5.24" y1="18.76" x2="18.66" y2="18.76" />
+
+                                <line class="cls-1" x1="5.24" y1="14.92" x2="18.66" y2="14.92" />
+
+                                <rect class="cls-1" x="1.4" y="1.49" width="21.1" height="21.1" />
+
+                                <polygon class="cls-1"
+                                    points="22.5 7.25 16.23 7.25 14.31 7.25 1.4 7.25 1.4 1.49 22.5 1.49 22.5 7.25" />
+
+                                <line class="cls-1" x1="4.28" y1="4.37" x2="6.2" y2="4.37" />
+
+                                <line class="cls-1" x1="8.11" y1="4.37" x2="10.03" y2="4.37" />
+
+                                <line class="cls-1" x1="11.95" y1="4.37" x2="13.87" y2="4.37" />
+
+                            </g>
+
+                        </svg>
+                    </div>
+                    <div>
+                        <span class="ml-1 font-semibold">Pengeluaran</span>
+                    </div>
                 </a>
             </li>
             <li class="mt-2 mb-2">
@@ -141,12 +184,12 @@
                 </a>
             </li>
             <hr class="h-px bg-transparent bg-gradient-to-r from-transparent via-black to-transparent" />
-                <li class="mt-2 ml-10">
-                    <a class="py-2 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors hover:text-black"
-                        href="">
-                        <span class="ml-1 font-semibold">Users</span>
-                    </a>
-                </li>
+            <li class="mt-2 ml-10">
+                <a class="py-2 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors hover:text-black"
+                    href="">
+                    <span class="ml-1 font-semibold">Users</span>
+                </a>
+            </li>
             <li class="mt-2 ml-10 mb-2">
                 <a class="py-2 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors hover:text-black"
                     href="https://custompedia.vercel.app/" target="blank">

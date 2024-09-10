@@ -14,4 +14,15 @@ class Pembayaran extends Model
         'kamar_id',
     ];
 
+    public function penghuni()
+    {
+        return $this->belongsTo(Penghuni::class);
+    }
+
+    public function kamar()
+    {
+        return $this->belongsTo(Kamar::class);
+    }
+
+
 }

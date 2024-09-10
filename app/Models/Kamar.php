@@ -14,4 +14,9 @@ class Kamar extends Model
         'img',
         'fasilitas',
     ];
+
+    public function pembayarans()
+    {
+        return $this->hasMany(Pembayaran::class);
+    }
 }

@@ -18,37 +18,46 @@
         <div class="p-6">
             <div class="w-full bg-white rounded-xl h-fit mx-auto">
                 <div class="p-3 text-center">
-                    <h1 class="font-extrabold text-3xl">Add Kamar</h1>
+                    <h1 class="font-extrabold text-3xl">Add Pembayaran</h1>
                 </div>
                 <div class="p-6">
                     <form class="space-y-3" method="post" action="{{ route('postpembayaran') }}"
                         enctype="multipart/form-data">
-                        @csrf @method('post')
+                        @csrf
+                        @method('post')
                         <div class="grid xl:grid-cols-3 grid-cols-1 gap-4">
-                        <div class="space-y-2">
-                            <label class="font-semibold text-black">Type:</label>
-                            <input type="text"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full"
-                                id="type" name="type" placeholder="Type" required />
+                            <div class="space-y-2">
+                                <label class="font-semibold text-black">Pada Tanggal:</label>
+                                <input type="date"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full"
+                                    id="pada_tanggal" name="pada_tanggal" required />
+                            </div>
+
+                            <!-- Penghuni Select Field -->
+                            <div class="space-y-2">
+                                <label class="font-semibold text-black">Penghuni:</label>
+                                <select name="penghuni_id" id="penghuni_id"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full" required>
+                                    <option value="">Pilih Penghuni</option>
+                                    @foreach ($penghuni as $item)
+                                        <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <!-- Kamar Select Field -->
+                            <div class="space-y-2">
+                                <label class="font-semibold text-black">Kamar:</label>
+                                <select name="kamar_id" id="kamar_id"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full" required>
+                                    <option value="">Pilih Kamar</option>
+                                    @foreach ($kamar as $item)
+                                        <option value="{{ $item->id }}">{{ $item->type }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                        <div class="space-y-2">
-                            <label class="font-semibold text-black">Harga:</label>
-                            <input type="text"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full"
-                                id="harga" name="harga" placeholder="1.xx.xxx" required />
-                        </div>
-                        <div class="space-y-2">
-                            <label class="font-semibold text-black">Img:</label>
-                            <input type="file"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full"
-                                id="img" name="img" >
-                        </div>
-                    </div>
-                        <div class="space-y-2">
-                            <label class="font-semibold text-black">Fasilitas:</label>
-                            <textarea class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full" id="fasilitas"
-                                name="fasilitas" placeholder="Fasilitas" required></textarea>
-                        </div>
+
                         <button type="submit" class="bg-blue-500 text-white p-2 w-fit hover:text-black rounded-lg">
                             Submit
                         </button>

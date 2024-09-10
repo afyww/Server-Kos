@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Add Pembayaran</title>
+    <title>Add Pengeluaran</title>
     @include('layout.head')
 </head>
 
@@ -18,37 +18,32 @@
         <div class="p-6">
             <div class="w-full bg-white rounded-xl h-fit mx-auto">
                 <div class="p-3 text-center">
-                    <h1 class="font-extrabold text-3xl">Add Kamar</h1>
+                    <h1 class="font-extrabold text-3xl">Add Pengeluaran</h1>
                 </div>
                 <div class="p-6">
-                    <form class="space-y-3" method="post" action="{{ route('postpembayaran') }}"
+                    <form class="space-y-3" method="post" action="{{ route('postpengeluaran') }}"
                         enctype="multipart/form-data">
                         @csrf @method('post')
                         <div class="grid xl:grid-cols-3 grid-cols-1 gap-4">
                         <div class="space-y-2">
-                            <label class="font-semibold text-black">Type:</label>
-                            <input type="text"
+                            <label class="font-semibold text-black">Pada Tanggal:</label>
+                            <input type="date"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full"
-                                id="type" name="type" placeholder="Type" required />
+                                id="pada_tanggal" name="pada_tanggal" placeholder="Type" required />
                         </div>
                         <div class="space-y-2">
-                            <label class="font-semibold text-black">Harga:</label>
+                            <label class="font-semibold text-black">Kebutuhan:</label>
                             <input type="text"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full"
-                                id="harga" name="harga" placeholder="1.xx.xxx" required />
+                                id="kebutuhan" name="kebutuhan" required />
                         </div>
                         <div class="space-y-2">
-                            <label class="font-semibold text-black">Img:</label>
-                            <input type="file"
+                            <label class="font-semibold text-black">Nominal:</label>
+                            <input type="text"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full"
-                                id="img" name="img" >
+                                id="nominal" name="nominal" required />
                         </div>
                     </div>
-                        <div class="space-y-2">
-                            <label class="font-semibold text-black">Fasilitas:</label>
-                            <textarea class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full" id="fasilitas"
-                                name="fasilitas" placeholder="Fasilitas" required></textarea>
-                        </div>
                         <button type="submit" class="bg-blue-500 text-white p-2 w-fit hover:text-black rounded-lg">
                             Submit
                         </button>

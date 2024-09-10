@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -11,11 +13,7 @@ class UserController extends Controller
     {
         $user = User::all();
 
-        if (request()->is('api/*')) {
-            return response()->json($user);
-        }
-
-        return view('user', compact('user'));
+        return view('user', ['user' => $user]);
     }
 
     public function create()
@@ -25,43 +23,28 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
-            'email' => 'required|string|email|unique:users|max:255',
-            'password' => 'required|string|min:8|confirmed',
-            'level' => 'required|string|in:admin,writer',
+            'email' => 'required|string|max:255|unique:users',
+            'password' => 'required|string|min:8',
+            'level' => 'required|string'  // Validate level as well
         ]);
 
-        $user = new User();
-        $user->name = $validatedData['name'];
-        $user->email = $validatedData['email'];
-        $user->password = bcrypt($validatedData['password']);
-        $user->level = $validatedData['level'];
-        $user->save();
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
 
-        return redirect('/user')->with('success', 'User Berhasil Dibuat !');
-    }
-
-    public function edit($id)
-    {
-
-        $user = User::find($id);
-        return view('edituser', ['user' => $user]);
-
-    }
-
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'category' => 'required',
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'level' => $request->level  // Assign the level directly during creation
         ]);
 
-        $userdata = $request->only(['category']);
+        $token = $user->createToken('auth_token')->plainTextToken;
 
-        User::where('id', $id)->update($userdata);
-
-        return redirect(route('user'))->with('success', 'User Berhasil Diupdate !');
-
+        return redirect(route('user'))->with('toast_success', 'Registration successful!')
+            ->with('success', 'User Berhasil Dibuat !');
     }
 
     public function destroy($id)
@@ -69,7 +52,5 @@ class UserController extends Controller
         User::destroy($id);
 
         return redirect(route('user'))->with('success', 'User Berhasil Dihapus !');
-
     }
-
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Pembayaran</title>
+    <title>User</title>
     @include('layout.head')
     <link href="//cdn.datatables.net/2.0.2/css/dataTables.dataTables.min.css" rel="stylesheet" />
 </head>
@@ -19,10 +19,10 @@
             <div class='w-full rounded-xl bg-white h-fit mx-auto'>
                 <div class="p-3">
                     <div class="flex justify-between">
-                        <h1 class="font-extrabold text-3xl">Pembayaran</h1>
+                        <h1 class="font-extrabold text-3xl">User</h1>
                         <a class="p-2 bg-blue-500 rounded-xl text-white hover:text-black text-center"
-                            href="{{ route('addpembayaran') }}">Add
-                            pembayaran</a>
+                            href="{{ route('adduser') }}">Add
+                            user</a>
                     </div>
                 </div>
                 <div class="p-2">
@@ -30,28 +30,33 @@
                         <table id="myTable" class="bg-gray-50 border-2">
                             <thead class="w-full">
                                 <th>No</th>
-                                <th>Pada Tangal</th>
                                 <th>Nama</th>
-                                <th>Kamar</th>
-                                <th>Nominal</th>
+                                <th>Email</th>
+                                <th>Level</th>
                                 <th>Action</th>
                             </thead>
                             <tbody>
                                 @php
                                     $no = 1;
                                 @endphp
-                                @foreach ($pembayaran as $item)
+                                @foreach ($user as $item)
                                     <tr class="border-2">
                                         <td>{{ $no++ }}</td>
-                                        <td>{{ $item->pada_tanggal }}</td>
-                                        <td>{{ $item->penghuni->nama }}</td>
-                                        <td>{{ $item->kamar->type }}</td>
-                                        <td>{{ $item->kamar->harga }}</td>
-                                        <td class="">
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->email }}</td>
+                                        <td>{{ $item->level }}</td>
+                                        <td class="flex gap-2">
+                                            <div class="w-full">
+                                                <a href="{{ route('editkamar', ['id' => $item->id]) }}">
+                                                    <h1
+                                                        class="p-2 text-white hover:text-black bg-blue-500 rounded-xl text-center">
+                                                        Edit</h1>
+                                                </a>
+                                            </div>
                                             <div class="w-full">
                                                 <form
                                                     class="p-2 text-white hover:text-black bg-red-500 rounded-xl text-center"
-                                                    method="post" action="{{ route('destroypembayaran', ['id' => $item->id]) }}">
+                                                    method="post" action="{{ route('destroyuser', ['id' => $item->id]) }}">
                                                     @csrf
                                                     @method('delete')
                                                     <button type="submit">Delete</button>

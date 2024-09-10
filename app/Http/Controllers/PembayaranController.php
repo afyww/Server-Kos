@@ -11,7 +11,7 @@ class PembayaranController extends Controller
 {
     public function index()
     {
-        $pembayaran = Pembayaran::all();
+        $pembayaran = Pembayaran::with('penghuni', 'kamar')->get();
 
         return view('pembayaran', ['pembayaran' => $pembayaran]);
     }

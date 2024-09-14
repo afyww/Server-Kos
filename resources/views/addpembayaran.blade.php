@@ -36,11 +36,11 @@
                             <!-- Penghuni Select Field -->
                             <div class="space-y-2">
                                 <label class="font-semibold text-black">Penghuni:</label>
-                                <select name="penghuni_id" id="penghuni_id"
+                                <select name="nama" id="nama"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full" required>
                                     <option value="">Pilih Penghuni</option>
                                     @foreach ($penghuni as $item)
-                                        <option value="{{ $item->id }}">{{ $item->nama }}</option>
+                                        <option value="{{ $item->nama }}">{{ $item->nama }}</option>
                                     @endforeach
                                 </select>
                             </div>

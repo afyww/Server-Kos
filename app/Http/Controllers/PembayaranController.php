@@ -11,7 +11,7 @@ class PembayaranController extends Controller
 {
     public function index()
     {
-        $pembayaran = Pembayaran::with('penghuni', 'kamar')->get();
+        $pembayaran = Pembayaran::with('kamar')->get();
 
         return view('pembayaran', ['pembayaran' => $pembayaran]);
     }
@@ -31,13 +31,13 @@ class PembayaranController extends Controller
     {
         $request->validate([
             'pada_tanggal' => 'required',
-            'penghuni_id' => 'required',
+            'nama' => 'required',
             'kamar_id' => 'required',
         ]);
 
         $data = [
             'pada_tanggal' => $request->input('pada_tanggal'),
-            'penghuni_id' => $request->input('penghuni_id'),
+            'nama' => $request->input('nama'),
             'kamar_id' => $request->input('kamar_id'),
         ];
 

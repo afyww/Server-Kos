@@ -10,14 +10,9 @@ class Pembayaran extends Model
     use HasFactory;
     protected $fillable = [
         'pada_tanggal',
-        'penghuni_id',
+        'nama',
         'kamar_id',
     ];
-
-    public function penghuni()
-    {
-        return $this->belongsTo(Penghuni::class);
-    }
 
     public function kamar()
     {

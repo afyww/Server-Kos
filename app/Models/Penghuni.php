@@ -14,10 +14,4 @@ class Penghuni extends Model
         'identitas',
     ];
 
-    public function pembayarans()
-    {
-        return $this->hasMany(Pembayaran::class);
-    }
-
-
 }

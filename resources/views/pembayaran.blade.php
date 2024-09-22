@@ -45,8 +45,8 @@
                                         <td>{{ $no++ }}</td>
                                         <td>{{ $item->pada_tanggal }}</td>
                                         <td>{{ $item->nama }}</td>
-                                        <td>{{ $item->kamar->type }}</td>
-                                        <td>{{ $item->kamar->harga }}</td>
+                                        <td>{{ $item->kamar }}</td>
+                                        <td>{{ $item->nominal }}</td>
                                         <td class="">
                                             <div class="w-full">
                                                 <form

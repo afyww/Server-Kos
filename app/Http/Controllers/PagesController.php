@@ -18,19 +18,17 @@ class PagesController extends Controller
         $total_penghuni = Penghuni::count();
 
         //TOTAL PEMBAYARAN
-        $total_pembayaran = Pembayaran::join('kamars', 'pembayarans.kamar_id', '=', 'kamars.id')
-            ->sum('kamars.harga');
+        $total_pembayaran = Pembayaran::sum('nominal');
 
         //TOTAL PENGELUARAN
         $total_pengeluaran = Pengeluaran::sum('nominal');
 
-        $pembayaran = Pembayaran::join('kamars', 'pembayarans.kamar_id', '=', 'kamars.id')
-            ->selectRaw("SUM(kamars.harga) as total_harga, DATE_FORMAT(pembayarans.created_at, '%M') as month_name, MONTH(pembayarans.created_at) as month_number")
-            ->whereYear('pembayarans.created_at', date('Y'))
-            ->groupBy('month_number', 'month_name')
-            ->orderBy('month_number')
-            ->pluck('total_harga', 'month_name');
-        
+        $pembayaran = Pembayaran::selectRaw("SUM(nominal) as total_harga, DATE_FORMAT(created_at, '%M') as month_name, MONTH(pada_tanggal) as month_number")
+        ->whereYear('pada_tanggal', date('Y'))
+        ->groupBy('month_number', 'month_name')
+        ->orderBy('month_number')
+        ->pluck('total_harga', 'month_name');
+            
         $labels1 = $pembayaran->keys();
         $data1 = $pembayaran->values();
         

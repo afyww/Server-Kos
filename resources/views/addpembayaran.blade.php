@@ -25,14 +25,13 @@
                         enctype="multipart/form-data">
                         @csrf
                         @method('post')
-                        <div class="grid xl:grid-cols-3 grid-cols-1 gap-4">
+                        <div class="grid xl:grid-cols-2 grid-cols-1 gap-4">
                             <div class="space-y-2">
                                 <label class="font-semibold text-black">Pada Tanggal:</label>
                                 <input type="date"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full"
                                     id="pada_tanggal" name="pada_tanggal" required />
                             </div>
-
                             <!-- Penghuni Select Field -->
                             <div class="space-y-2">
                                 <label class="font-semibold text-black">Penghuni:</label>
@@ -41,18 +40,6 @@
                                     <option value="">Pilih Penghuni</option>
                                     @foreach ($penghuni as $item)
                                         <option value="{{ $item->nama }}">{{ $item->nama }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <!-- Kamar Select Field -->
-                            <div class="space-y-2">
-                                <label class="font-semibold text-black">Kamar:</label>
-                                <select name="kamar_id" id="kamar_id"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full" required>
-                                    <option value="">Pilih Kamar</option>
-                                    @foreach ($kamar as $item)
-                                        <option value="{{ $item->id }}">{{ $item->type }}</option>
                                     @endforeach
                                 </select>
                             </div>

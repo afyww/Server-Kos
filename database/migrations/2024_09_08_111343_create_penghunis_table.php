@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('nama');
             $table->string('alamat');
             $table->string('identitas');
+            $table->foreignId('kamar_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

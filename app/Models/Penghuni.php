@@ -12,6 +12,13 @@ class Penghuni extends Model
         'nama',
         'alamat',
         'identitas',
+        'kamar_id',
     ];
+
+    public function kamar()
+    {
+        return $this->belongsTo(Kamar::class);
+    }
+
 
 }

@@ -11,7 +11,7 @@ class PembayaranController extends Controller
 {
     public function index()
     {
-        $pembayaran = Pembayaran::with('kamar')->get();
+        $pembayaran = Pembayaran::all();
 
         return view('pembayaran', ['pembayaran' => $pembayaran]);
     }
@@ -19,11 +19,9 @@ class PembayaranController extends Controller
     public function create()
     {
         $penghuni = Penghuni::all();
-        $kamar = Kamar::all();
 
         return view('addpembayaran', [
             'penghuni' => $penghuni,
-            'kamar' => $kamar
         ]);
     }
 
@@ -31,21 +29,25 @@ class PembayaranController extends Controller
     {
         $request->validate([
             'pada_tanggal' => 'required',
-            'nama' => 'required',
-            'kamar_id' => 'required',
+            'nama' => 'required', 
         ]);
-
+    
+        $penghuni = Penghuni::where('nama', $request->input('nama'))->firstOrFail();
+    
+        $kamar = $penghuni->kamar;
+    
         $data = [
             'pada_tanggal' => $request->input('pada_tanggal'),
-            'nama' => $request->input('nama'),
-            'kamar_id' => $request->input('kamar_id'),
+            'nama' => $penghuni->nama, 
+            'kamar' => $kamar->type, 
+            'nominal' => $kamar->harga, 
         ];
-
+    
         Pembayaran::create($data);
-
+    
         return redirect()->route('pembayaran')->with('success', 'Pembayaran Sukses Dibuat!');
     }
-
+    
     public function destroy($id)
     {
         Pembayaran::destroy($id);

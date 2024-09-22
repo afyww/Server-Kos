@@ -33,6 +33,7 @@
                                 <th>Nama</th>
                                 <th>Alamat</th>
                                 <th>Identitas</th>
+                                <th>Kamar</th>
                                 <th>Action</th>
                             </thead>
                             <tbody>
@@ -47,6 +48,7 @@
                                         <td><img src="{{ asset('storage/identitas/' . basename($item->identitas)) }}"
                                                 alt="Product Image"
                                                 class='mx-auto my-auto w-44 h-28 rounded-xl relative' /></td>
+                                                <td>{{ $item->kamar->type }}</td>
                                         <td class="flex gap-2">
                                             <div class="w-full">
                                                 <a href="{{ route('editpenghuni', ['id' => $item->id]) }}">

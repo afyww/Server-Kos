@@ -25,7 +25,7 @@
                         enctype="multipart/form-data">
                         @csrf
                         @method('put')
-                        <div class="grid xl:grid-cols-2 grid-cols-1 gap-4">
+                        <div class="grid xl:grid-cols-3 grid-cols-1 gap-4">
                             <div class="space-y-2">
                                 <label class="font-semibold text-black">Nama:</label>
                                 <input type="text"
@@ -38,6 +38,17 @@
                                     class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full"
                                     id="alamat" name="alamat" value="{{ $penghuni->alamat }}" required>
                             </div>
+                            <div class="space-y-2">
+                                <label class="font-semibold text-black">Kamar:</label>
+                                <select name="kamar_id" id="kamar_id"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 p-2 rounded-lg w-full" required>
+                                    <option value="">Pilih Kamar</option>
+                                    @foreach ($kamar as $item)
+                                        <option value="{{ $item->id }}">{{ $item->type }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
                         </div>
                         <div class="space-y-2">
                             <label class="font-semibold text-black">Identitas:</label>

@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->date('pada_tanggal');
             $table->string('nama');
-            $table->foreignId('kamar_id')->constrained()->onDelete('cascade');
+            $table->string('kamar');
+            $table->string('nominal');
             $table->timestamps();
         });
     }

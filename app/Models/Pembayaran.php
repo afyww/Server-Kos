@@ -11,13 +11,9 @@ class Pembayaran extends Model
     protected $fillable = [
         'pada_tanggal',
         'nama',
-        'kamar_id',
+        'kamar',
+        'nominal',
     ];
-
-    public function kamar()
-    {
-        return $this->belongsTo(Kamar::class);
-    }
 
 
 }
